@@ -5,8 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/global_componnets.dart';
 import '../../items/cart_item.dart';
-
-
+import '../../test_screen.dart';
 
 
 
@@ -63,7 +62,7 @@ class _CartScreenState extends State<CartScreen> {
 
                 Container(
                   width: double.infinity.w,
-                  height: 410.h,
+                  height: 480.h,
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: BouncingScrollPhysics(),
@@ -80,11 +79,8 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
 
-
-
-
                      Container(
-                       height: 156.h,
+                       height:80.h,
                        decoration: BoxDecoration(
                          color: Colors.grey.shade200,
                          borderRadius: BorderRadius.only(
@@ -95,15 +91,17 @@ class _CartScreenState extends State<CartScreen> {
 
                        child: Column(
                          children: [
-                           CartRow("اجمالي المنتجات", "\$9.3000000" ),
-                           CartRow(   "سعر التوصيل","\$9.3000"),
-                           CartRow( "الاجمالي","\$9.3000"),
+                           // CartRow("اجمالي المنتجات", "\$9.3000000" ),
+                           // CartRow(   "سعر التوصيل","\$9.3000"),
+                           // CartRow( "الاجمالي","\$9.3000"),
 
                            Padding(
-                             padding:  EdgeInsets.symmetric(horizontal: 20.w).add(EdgeInsets.only(top: 10.h)),
+                             padding:  EdgeInsets.symmetric(horizontal: 20.w).add(EdgeInsets.only(top: 20.h)),
                              child: myButton(
                                "إتمام الشراء",
-                                 (){}
+                                 (){
+                                 To(context , TestScreen());
+                                 }
                              ),
                            ),
                          ],

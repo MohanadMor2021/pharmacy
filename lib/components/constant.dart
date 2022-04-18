@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 const buttonTextColor = Color(0xffA6BCD0);
 
-const primaryColor = Color(0xffe1aa04);
+const primaryColor = Color(0xff00CE7C);
 
-const subPrimaryColor =  Color(0xff009900);
+const subPrimaryColor =  Color(0xff00AEEF);
+
+
+
+//const primaryColor = Color(0xffe1aa04);

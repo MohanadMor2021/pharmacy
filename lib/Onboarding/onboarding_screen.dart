@@ -4,6 +4,7 @@ import 'package:pharm_care/Onboarding/size_config.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../auth/Login.dart';
+import '../components/constant.dart';
 import 'onboarding_contents.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         borderRadius: BorderRadius.all(
           Radius.circular(50),
         ),
-        color:index==_currentPage?  Colors.orange:Colors.black,
+        color:index==_currentPage?  primaryColor:Colors.black,
       ),
       margin: const EdgeInsets.only(right: 5),
       height: 10,
@@ -125,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 color: Colors.black,letterSpacing:3.0
                             )),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.orange.shade400,
+                              primary:primaryColor,
                               shape: new RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -146,7 +147,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.orange.shade400
+                                  color: primaryColor
                                       ,borderRadius: BorderRadius.circular(20)
                                 ),
                                 child: TextButton(
@@ -165,7 +166,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     elevation: 0,
                                     textStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                      color: primaryColor,
                                     ),
                                   ),
                                 ),
@@ -181,7 +182,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: Text("التالي",style:GoogleFonts.cairo(fontWeight: FontWeight.bold,letterSpacing: 5.0),),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.orange.shade400,
+                                  primary: primaryColor,
                                   shape: new RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),

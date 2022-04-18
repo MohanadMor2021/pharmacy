@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/constant.dart';
+import '../screens/bnb_screens/main_screen.dart';
 import 'OTP.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
 
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: primaryColor,
 
           centerTitle: true,
           title: Text('تسجيل الدخول ',style:TextStyle(
@@ -72,12 +75,16 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   // OtpPage(_controller.text)
                   Text('hello');
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => OtpPage(_controller.text)),
+                  // );
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OtpPage(_controller.text)),
-                  );
+                    MaterialPageRoute(builder: (context) => MainScreen(),
+                  ));
                 },
-                color: Colors.orangeAccent,
+                color: primaryColor,
                 child: Text('التحقق', style: TextStyle(color: Colors.black,fontSize: 20,
                   fontFamily: "ElMessiri",
                   fontWeight: FontWeight.normal,

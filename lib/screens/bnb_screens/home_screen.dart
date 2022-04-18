@@ -1,17 +1,26 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:delayed_display/delayed_display.dart';
 
+
 import '../../components/constant.dart';
 import '../../components/global_componnets.dart';
+import '../../data.dart';
 import '../../items/brand_item.dart';
 import '../../items/category_item.dart';
 import '../../items/product_item.dart';
-
+import '../drawer_screens/about_us_screen.dart';
+import '../drawer_screens/nearest _pharm_screen.dart';
+import '../drawer_screens/orders_screen.dart';
+import '../drawer_screens/saved_screen.dart';
+import '../ineer_screens/all_brands_screen.dart';
+import '../ineer_screens/offer_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -34,11 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   List _offerImages = [
-    "https://cdn.vectorstock.com/i/1000x1000/87/39/web-page-design-template-for-spring-sale-vector-23958739.webp",
-    "https://cdn.vectorstock.com/i/1000x1000/54/23/cosmetic-ads-banner-realistic-make-up-pencil-vector-32005423.webp",
-    "https://cdn.vectorstock.com/i/1000x1000/05/66/beauty-sale-template-with-cosmetic-products-gift-vector-23960566.webp",
+    "https://img.freepik.com/free-psd/beauty-spa-banner-template_23-2148623659.jpg?t=st=1649922677~exp=1649923277~hmac=03fcc4d05e5412bb69f5c9af2caa2d5fdac5c727d2d21cb41f785c2ec074af56&w=826",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHOv13ipMV5tavmGAO1xchfPLEzGerQGDzg&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSya8XzsQoDnRsC0frxnByHqh6lbhPJsryWiw&usqp=CAU",
 
   ];
+
+
 
 
 
@@ -48,18 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: Color(0xffFFFAFA),
+        backgroundColor: Colors.white,
         appBar: AppBar(
-        actions: [
-          Padding(
-            padding:  EdgeInsets.only(left: 10.w , top: 10.h),
-            child: CircleAvatar(
-              backgroundColor: Colors.grey.shade300,
-              radius: 18,
-              child: Icon(Icons.menu_outlined , color: subPrimaryColor,),
-            ),
-          )
-        ],
         title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -67,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "        Yon",
+                  "        care",
                   textDirection: TextDirection.rtl,
 
                   style: GoogleFonts.cairo(
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Text(
-                  " Pharamol ",
+                  " Pharama ",
                   textDirection: TextDirection.rtl,
                   style: GoogleFonts.cairo(
                       fontSize: 18.sp,
@@ -93,7 +94,91 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0.0,
         backgroundColor: Colors.white,
         centerTitle: true,
+         // iconTheme: IconThemeData(color: primaryColor),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: CircleAvatar(
+                    child: const Icon(Icons.menu , color: primaryColor,),
+                  backgroundColor: Colors.grey.shade200,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+
+
+
       ),
+
+
+        drawer: Padding(
+          padding:  EdgeInsets.only(top: 33.h , bottom: 1.h),
+          child: ClipRRect (
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.r),
+              bottomLeft: Radius.circular(20.r),
+            ),
+
+            child: Drawer(
+              child: Column(
+                children: [
+
+                  SizedBox(height: 50.h,),
+
+                  Image.asset("assets/images/drawer_logo.png" ,width: 120,),
+                  Text(
+                    "pharmacy care",
+                    style: GoogleFonts.cairo(
+                      color: Colors.black,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+
+                  // Divider(
+                  //   endIndent: 50,
+                  //   indent: 50,
+                  //   color: primaryColor,
+                  //   thickness: 3,
+                  //
+                  // ),
+
+                  SizedBox(height: 50.h,),
+
+                  myListTiel(
+                      "طلباتك",
+                      Icon(Icons.fact_check_outlined , color: Colors.black), (){
+                    To(context , OrdersScreen());
+
+                  },
+                  ),
+
+                  myListTiel("المحفوظات" , Icon(Icons.download_outlined , color: Colors.black),(){
+                    To(context , SavedProductScreen());
+
+                  }),
+
+                  myListTiel("اقرب صيدلية" , Icon(Icons.location_on_outlined , color: Colors.black),(){
+                    To(context , NearestPharmScreen());
+
+                  }),
+
+                  myListTiel("معلومات عنا" , Icon(Icons.info_outline , color: Colors.black),(){
+                    To(context , AboutUsScreen());
+                  }),
+
+                  myListTiel("تسجيل خروج" , Icon(Icons.logout_outlined , color: Colors.black),(){}),
+
+                ],
+              ),
+            ),
+
+          ),
+        ),
 
         body: SingleChildScrollView(
 
@@ -106,21 +191,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
               DelayedDisplay(
                 delay: Duration(milliseconds: 200),
-
-
                 child: Padding(
                   padding:  EdgeInsets.only(left: 10.w , right: 10 , top: 20.h , bottom: 20.h),
                   child: Container(
+
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(50.r),
+                     //  border: Border.all(color: Colors.grey, width: 1.7),
+
                     ),
                     child: TextFormField(
                       controller: search,
                       decoration: InputDecoration(
                         hintText: "ما الذي تبحث عنه؟",
                         hintStyle: defaultTextStyleHint(),
-                        prefixIcon:Icon(Icons.search_outlined , color: buttonTextColor, size: 30,),
+                        prefixIcon:Padding(
+                          padding:  EdgeInsets.only(right: 10.w),
+                          child: Icon(Icons.search_outlined , color: Colors.black38, size: 30,),
+                        ),
                         border: InputBorder.none,
                       ),
 
@@ -136,34 +225,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 child: Padding(
                   padding:  EdgeInsets.symmetric(horizontal: 8.w),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.r),
-                    child: Container(
-                      height: 160.h,
-                      width: double.infinity.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      child: Carousel(
-                       // boxFit: BoxFit.fill,
-                        autoplay: true,
-                        animationCurve: Curves.easeInCirc,
-                        animationDuration: Duration(milliseconds: 1000),
-                        dotSize: 5,
-                        dotIncreasedColor: Colors.white70,
-                        // dotBgColor: Colors.black.withOpacity(0.2),
-                        dotPosition: DotPosition.bottomCenter,
-                        showIndicator: true,
+                  child: Container(
+                    height: 160.h,
+                    width: MediaQuery.of(context).size.width * 0.90,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(0.r),
+                    ),
+                    child: Carousel(
+                     // boxFit: BoxFit.fill,
+                      autoplay: true,
+                      animationCurve: Curves.easeInCirc,
+                      animationDuration: Duration(milliseconds: 1000),
+                      dotSize: 5,
+                      dotIncreasedColor: Colors.white70,
+                      // dotBgColor: Colors.black.withOpacity(0.2),
+                      dotPosition: DotPosition.bottomCenter,
+                      showIndicator: true,
 
-                        indicatorBgPadding: 5,
-                        images: [
-                          ExactAssetImage(_carouselImages[0]),
-                          ExactAssetImage(_carouselImages[1]),
-                          ExactAssetImage(_carouselImages[2]),
-                          ExactAssetImage(_carouselImages[3]),
-                          ExactAssetImage(_carouselImages[4]),
-                        ],
-                      ),
+                      indicatorBgPadding: 5,
+                      images: [
+                        ExactAssetImage(_carouselImages[0]),
+                        ExactAssetImage(_carouselImages[1]),
+                        ExactAssetImage(_carouselImages[2]),
+                        ExactAssetImage(_carouselImages[3]),
+                        ExactAssetImage(_carouselImages[4]),
+                      ],
                     ),
                   ),
                 ),
@@ -191,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           .add(EdgeInsets.only(bottom:20)),
 
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 0.7,
+                        childAspectRatio: 0.6,
                         // number of items per row
                         crossAxisCount: 4,
                         // vertical spacing between the items
@@ -201,7 +287,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       // number of items in your list
                       itemCount: 8,
-                      itemBuilder: (context, index) => CategoryItem(),
+                      itemBuilder: (context, index) {
+                        return categores.map((e) => CategoryItem(categores[index])).toList()[index];
+                      }
                     ),
                   ),
                 ),
@@ -235,6 +323,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 20.w),
+                child: InkWell(
+                  onTap: (){
+                        To(context , AllBrandsScreen());
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    height: 50.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: primaryColor),
+                      color: Colors.white,
+                    ),
+                    child: Text(
+                      "عرض كل الماركات",
+                      style: GoogleFonts.cairo(
+                          fontSize: 16.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+
+
+
               DelayedDisplay(
                 delay: Duration(milliseconds: 700),
 
@@ -246,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
               Container(
-                height: 110.h,
+                height: 130.h,
                 width: MediaQuery.of(context).size.width * 0.95.w,
                 child: Swiper(
                   itemCount: _offerImages.length,
@@ -257,11 +373,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (BuildContext ctx, int index) {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        color: Colors.blueGrey,
-                        child: Image.network(
-                          _offerImages[index],
-                          fit: BoxFit.fill,
+                      child: InkWell(
+                        onTap: (){
+                          To(context , OfferScreen());
+                        },
+                        child: Container(
+                          child: Image.network(
+                            _offerImages[index],
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     );
@@ -276,7 +396,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               Container(
-                height: 200.h,
+                height: 300.h,
                 child: ListView.builder(
                     physics: BouncingScrollPhysics(),
                   //  shrinkWrap: true,
@@ -284,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding:  EdgeInsets.only(left: 8.w  , bottom: 20.h),
+                        padding:  EdgeInsets.only(left: 8.w  , bottom: 20.h , right: 5.w),
                         child: ProductItem(),
                       );
                     }),

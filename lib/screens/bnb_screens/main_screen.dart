@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/size_extension.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pharm_care/screens/bnb_screens/profile_screen.dart';
-import 'package:pharm_care/screens/bnb_screens/upload_screen.dart';
-
 
 import '../../components/constant.dart';
 import '../../components/global_componnets.dart';
 import 'cart_screen.dart';
+import 'contact_screen.dart';
 import 'home_screen.dart';
 
 
@@ -18,7 +19,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-   List<Map<String, Object>>  _pages=[];
+  List<Map<String, Object>>? _pages;
   int _selectedPageIndex = 0;
 
 
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
         'page': HomeScreen(),
       },
       {
-        'page': UploadScreen(),
+        'page': ContactScreen(),
       },
       {
         'page': CartScreen(),
@@ -55,9 +56,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
-      body: HomeScreen(),
+      body: _pages![_selectedPageIndex]['page'] as Widget,
 
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
@@ -66,9 +68,20 @@ class _MainScreenState extends State<MainScreen> {
         showUnselectedLabels: true,
         selectedItemColor: primaryColor,
         unselectedItemColor: Colors.grey,
-        selectedLabelStyle: TextStyle(
-          color: primaryColor,
+        selectedLabelStyle: GoogleFonts.cairo(
+          //color: primaryColor,
+            color:primaryColor,
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w600,
+          ),
+
+        unselectedLabelStyle: GoogleFonts.cairo(
+          //color: primaryColor,
+          color:Colors.grey,
+          fontSize: 10.sp,
+          fontWeight: FontWeight.w600,
         ),
+
 
         items: [
 
@@ -76,23 +89,25 @@ class _MainScreenState extends State<MainScreen> {
          BottomNavigationBarItem(
            icon: // Icon(Icons.home_outlined),
            svgImage("home" , color:  _selectedPageIndex == 0 ? primaryColor : Colors.grey),
-           label: "Home",
+           label: "الرئيسية",
          ),
 
 
           BottomNavigationBarItem(
-            icon: svgImage("upload" , color:  _selectedPageIndex == 1 ? primaryColor : Colors.grey),
-            label: "upload",
+            icon: Icon(Icons.chat),
+            //svgImage("upload" , color:  _selectedPageIndex == 1 ? primaryColor : Colors.grey),
+            label: "التواصل",
           ),
 
           BottomNavigationBarItem(
             icon: svgImage("cart" , color:  _selectedPageIndex == 2 ? primaryColor : Colors.grey),
-            label: "cart",
+            label: "العربة",
+
           ),
 
           BottomNavigationBarItem(
             icon: svgImage("profile" , color:  _selectedPageIndex == 3 ? primaryColor : Colors.grey),
-            label: "profile",
+            label: "حسابي",
           ),
 
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 
+import '../components/global_componnets.dart';
+import '../screens/ineer_screens/brand_product_screen.dart';
+
+
 
 
 class BrandItem extends StatelessWidget {
@@ -8,7 +12,9 @@ class BrandItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        To(context , BrandProductScreen());
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10.r),
         child: Container(

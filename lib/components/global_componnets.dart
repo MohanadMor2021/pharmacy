@@ -52,13 +52,20 @@ Future ToAndFinish(BuildContext context, Widget widget) async {
 
 
 TextStyle defaultTextStyleHint() =>
-    TextStyle(fontSize: 16.sp,
-      color: buttonTextColor,
+    GoogleFonts.cairo(
+      fontSize: 16.sp,
+      color: Colors.black,
       fontWeight:FontWeight.w300,
 
     );
 
 
+Widget myDelayedDisplay(int time , {Widget? child}) =>
+
+    DelayedDisplay(
+      delay: Duration(milliseconds: time), child: Text(''),
+
+    );
 
 
 
@@ -75,6 +82,58 @@ TextStyle defaultTextStyleHint() =>
 //     fontSize: 16.0,
 //   );
 // }
+
+
+
+
+Widget myListTiel(String title , Widget icon  ,  function) =>
+
+Column(
+  children: [
+
+    Material(
+      child: ListTile(
+        onTap: function,
+        title:Row(
+          children: [
+            icon,
+              //Icon(Icons.fact_check , color: Colors.black,),
+            SizedBox(width: 10.w,),
+            Text(
+              title,
+              style: GoogleFonts.cairo(
+                color: Colors.black,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Spacer(),
+
+            Icon(Icons.arrow_forward_ios , size: 18.r, color: Colors.black45 ),
+
+          ],
+        ),
+
+        //Image.asset("assets/images/order_icon.png"),
+
+      ),
+    ),
+
+    // Divider(
+    //   endIndent: 10,
+    //   indent: 10,
+    //   color: Colors.grey,
+    //   thickness: 1,
+    //
+    // ),
+
+
+
+  ],
+
+);
+
+
 
 
 
@@ -208,7 +267,7 @@ Widget defaultTextForm(
         //         (str) {
         //       return defaultValidator;
         //     },
-        keyboardType: type,
+          keyboardType: type,
 
         validator: (value){
           if(value!.isEmpty){

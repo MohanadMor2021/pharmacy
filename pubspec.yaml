@@ -45,9 +45,18 @@ dependencies:
   carousel_pro: ^1.0.0
   flutter_staggered_animations: ^1.0.0
   pin_code_fields:
+  url_launcher: ^6.0.20
+  geocoder:
+  google_maps_flutter:
+  location:
+  rating_dialog: ^2.0.3
+  intl: ^0.17.0
+  cool_alert: ^1.1.0
+  lottie: ^1.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -68,22 +77,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-
   assets:
     - assets/images/
-
-  fonts:
-    - family: Mulish
-      fonts:
-        - asset: assets/fonts/Mulish-Light.ttf
-        - asset: assets/fonts/Mulish-SemiBold.ttf
-    - family: ElMessiri
-      fonts:
-        - asset: assets/fonts/ElMessiri-Bold.ttf
-        - asset: assets/fonts/ElMessiri-Medium.ttf
-        - asset: assets/fonts/ElMessiri-Regular.ttf
-        - asset: assets/fonts/ElMessiri-SemiBold.ttf
-
+    - assets/lf30_editor_irrikgtc.json
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -110,3 +107,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               primaryColor: Colors.orange),
          home:  Directionality(
            textDirection: TextDirection.rtl,
-           child:  MainScreen(),
+           child:  OnboardingScreen(),
          ),
        );
         }

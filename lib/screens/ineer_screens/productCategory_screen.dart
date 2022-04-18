@@ -51,13 +51,13 @@ class ProductCategoryScreen extends StatelessWidget {
                 .add(EdgeInsets.only(bottom:20)),
 
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 0.8,
+              childAspectRatio: 0.5,
               // number of items per row
               crossAxisCount: 2,
               // vertical spacing between the items
-              mainAxisSpacing: 10,
+              mainAxisSpacing: 8,
               // horizontal spacing between the items
-              crossAxisSpacing:10,
+              crossAxisSpacing:8,
             ),
             // number of items in your list
             itemCount: 8,
